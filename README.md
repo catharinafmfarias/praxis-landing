@@ -1,0 +1,46 @@
+# Práxis · Landing page do Checklist CFM
+
+Landing page para captar leads com o e-book gratuito **"Checklist: seu perfil está dentro das regras do CFM?"**.
+
+Página estática: só HTML, CSS e um pouco de JavaScript, sem dependências nem build.
+
+## Estrutura
+
+```
+praxis-landing/
+├── index.html          → a landing page completa
+├── assets/
+│   └── favicon.svg     → ícone da aba do navegador
+├── .gitignore
+└── README.md
+```
+
+## Antes de publicar
+
+No `index.html`:
+
+1. **WhatsApp**: no fim do arquivo, troque `55XXXXXXXXXXX` pelo número da Práxis (só dígitos, com DDI 55 e DDD).
+2. **CNPJ**: no rodapé, troque `[CNPJ]` pelo número real.
+3. **Ferramenta de leads (opcional)**: hoje o formulário abre o WhatsApp com os dados preenchidos. Para enviar a RD Station, planilha ou CRM, substitua o trecho marcado no script por essa integração.
+
+## Publicar no GitHub Pages
+
+1. Crie um repositório no GitHub (ex.: `praxis-landing`).
+2. Envie os arquivos desta pasta: **Add file › Upload files**, arraste tudo e clique em **Commit changes**.
+3. Vá em **Settings › Pages**.
+4. Em **Source**, escolha **Deploy from a branch**, branch `main`, pasta `/ (root)`, e salve.
+5. Em 1 a 2 minutos o site fica no ar em `https://SEU-USUARIO.github.io/praxis-landing/`.
+
+### Domínio próprio (opcional)
+
+Em **Settings › Pages › Custom domain**, informe o domínio (ex.: `checklist.praxis.com.br`) e crie no seu provedor de domínio um registro **CNAME** apontando para `SEU-USUARIO.github.io`.
+
+## Rodar localmente
+
+Abra o `index.html` direto no navegador. Não precisa instalar nada.
+
+## Sobre as animações
+
+- Entrada do título, desenho do logo, faixa rolando, e-book flutuando e revelação de elementos ao rolar.
+- Funcionam em Chrome, Edge, Safari e Firefox, inclusive no celular.
+- Quem ativa "reduzir movimento" no aparelho vê a página estática.
