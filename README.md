@@ -11,6 +11,8 @@ praxis-landing/
 ├── index.html          → a landing page completa
 ├── assets/
 │   └── favicon.svg     → ícone da aba do navegador
+├── google-apps-script/
+│   └── Code.gs         → script que grava os leads na planilha
 ├── .gitignore
 └── README.md
 ```
@@ -19,9 +21,26 @@ praxis-landing/
 
 No `index.html`:
 
-1. **WhatsApp**: no fim do arquivo, troque `55XXXXXXXXXXX` pelo número da Práxis (só dígitos, com DDI 55 e DDD).
+1. **WhatsApp**: no fim do arquivo, `WHATSAPP` tem o número da Práxis (só dígitos, com DDI 55 e DDD) e `WHATSAPP_MSG` a mensagem que já vem escrita na conversa.
 2. **CNPJ**: no rodapé, troque `[CNPJ]` pelo número real.
-3. **Ferramenta de leads (opcional)**: hoje o formulário abre o WhatsApp com os dados preenchidos. Para enviar a RD Station, planilha ou CRM, substitua o trecho marcado no script por essa integração.
+3. **Planilha de leads**: no fim do arquivo, `PLANILHA_URL` tem a URL do Apps Script (veja o passo a passo abaixo).
+
+## Planilha de leads (Google Sheets)
+
+Cada envio do formulário vira uma linha na planilha com: data, nome, WhatsApp, e-mail, especialidade e cidade.
+
+1. Crie uma planilha nova em https://sheets.new (ex.: "Leads Práxis").
+2. Na planilha, abra **Extensões › Apps Script**.
+3. Apague o conteúdo do editor, cole o conteúdo de `google-apps-script/Code.gs` e salve (ícone de disquete).
+4. Clique em **Implantar › Nova implantação**. Em **Selecionar tipo** (engrenagem), escolha **App da Web** e preencha:
+   - **Executar como**: Eu
+   - **Quem pode acessar**: Qualquer pessoa
+5. Clique em **Implantar** e autorize o acesso com sua conta Google. Se aparecer "O Google não verificou este app", clique em **Avançado › Acessar (não seguro)**: o script é seu e só grava nesta planilha.
+6. Copie a **URL do app da Web** (termina em `/exec`) e cole no `index.html`, no lugar de `COLE_AQUI_A_URL_DO_APPS_SCRIPT`.
+
+A aba **Leads** é criada sozinha no primeiro envio.
+
+Se depois você alterar o `Code.gs`, vá em **Implantar › Gerenciar implantações › Editar (lápis) › Versão: Nova versão** para a mudança valer. Assim a URL continua a mesma.
 
 ## Publicar no GitHub Pages
 

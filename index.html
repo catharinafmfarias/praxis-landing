@@ -262,10 +262,12 @@ h1{margin:0;font-size:clamp(56px,8.4vw,118px);font-weight:900;line-height:.86;le
 </footer>
 
 <script>
-/* ===== Configuração: troque pelo número da Práxis (só dígitos, com DDI e DDD) ===== */
-var WHATSAPP = '55XXXXXXXXXXX';
+/* ===== Configuração: número da Práxis (só dígitos, com DDI e DDD) e mensagem inicial ===== */
+var WHATSAPP = '5571988082141';
+var WHATSAPP_MSG = 'Olá! Gostaria de adequar o meu perfil às regras do CFM';
 
-document.getElementById('wa-header').href = 'https://wa.me/' + WHATSAPP;
+document.getElementById('wa-header').href =
+  'https://wa.me/' + WHATSAPP + '?text=' + encodeURIComponent(WHATSAPP_MSG);
 
 /* Revelar elementos ao rolar a página */
 (function () {
@@ -285,31 +287,40 @@ document.getElementById('wa-header').href = 'https://wa.me/' + WHATSAPP;
   });
 })();
 
-/* Envio do formulário.
-   Hoje ele abre uma conversa no WhatsApp com os dados preenchidos.
-   Para mandar para uma ferramenta de leads (RD Station, planilha, CRM),
-   troque o trecho marcado abaixo pela chamada da ferramenta. */
+/* Envio do formulário para a planilha do Google.
+   Cole em PLANILHA_URL o endereço do App da Web do Apps Script
+   (termina em /exec). Passo a passo no README.md. */
+var PLANILHA_URL = 'https://script.google.com/macros/s/AKfycbyPVkfDdMPg6W84ZoL0xF3VIuaYpvsQk15c__9NFBy7B2FWyA3gHq2jIQFLHgQEn1Hrmg/exec';
+
 document.getElementById('form').addEventListener('submit', function (ev) {
   ev.preventDefault();
   var f = ev.target, msg = document.getElementById('form-msg');
+  var botao = f.querySelector('button[type="submit"]');
   if (!f.checkValidity()) {
     msg.style.color = '#87181F';
     msg.textContent = 'Preencha todos os campos para receber o checklist.';
     f.reportValidity();
     return;
   }
-  var d = new FormData(f);
-  var texto = 'Olá! Quero o Checklist CFM.%0A' +
-    'Nome: ' + encodeURIComponent(d.get('nome')) + '%0A' +
-    'E-mail: ' + encodeURIComponent(d.get('email')) + '%0A' +
-    'Especialidade: ' + encodeURIComponent(d.get('especialidade')) + '%0A' +
-    'Cidade: ' + encodeURIComponent(d.get('cidade'));
-  /* --- trecho para trocar pela integração --- */
-  window.open('https://wa.me/' + WHATSAPP + '?text=' + texto, '_blank', 'noopener');
-  /* ------------------------------------------ */
+  botao.disabled = true;
   msg.style.color = '#4B5236';
-  msg.textContent = 'Pronto! Vamos te enviar o checklist em instantes.';
-  f.reset();
+  msg.textContent = 'Enviando...';
+  /* no-cors: o Apps Script não libera a leitura da resposta para outros
+     sites, mas os dados chegam normalmente na planilha. */
+  fetch(PLANILHA_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    body: new URLSearchParams(new FormData(f))
+  }).then(function () {
+    msg.style.color = '#4B5236';
+    msg.textContent = 'Pronto! Vamos te enviar o checklist em instantes.';
+    f.reset();
+  }).catch(function () {
+    msg.style.color = '#87181F';
+    msg.textContent = 'Não foi possível enviar. Verifique sua conexão e tente de novo.';
+  }).then(function () {
+    botao.disabled = false;
+  });
 });
 </script>
 </body>
