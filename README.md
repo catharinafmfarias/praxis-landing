@@ -22,7 +22,7 @@ praxis-landing/
 No `index.html`:
 
 1. **WhatsApp**: no fim do arquivo, `WHATSAPP` tem o número da Práxis (só dígitos, com DDI 55 e DDD) e `WHATSAPP_MSG` a mensagem que já vem escrita na conversa.
-2. **CNPJ**: no rodapé, troque `[CNPJ]` pelo número real.
+2. **Rodapé**: Instagram (@praxis.mktsaude) e CNPJ ficam no fim do `index.html`, dentro do `<footer>`.
 3. **Planilha de leads**: no fim do arquivo, `PLANILHA_URL` tem a URL do Apps Script (veja o passo a passo abaixo).
 
 ## Planilha de leads (Google Sheets)
