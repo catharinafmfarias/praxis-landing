@@ -84,6 +84,14 @@ h1{margin:0;font-size:clamp(56px,8.4vw,118px);font-weight:900;line-height:.86;le
 .about-text{flex:999 1 480px;min-width:0;display:flex;flex-direction:column;gap:16px;font-size:19px;line-height:1.6;color:var(--grafite)}
 .about-text p{margin:0}
 .about-text strong{font-family:'Archivo',sans-serif;color:var(--tinta)}
+.team{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:48px 40px}
+.person{display:flex;flex-direction:column;gap:10px;margin:0}
+.person img{display:block;width:100%;max-width:300px;height:auto;aspect-ratio:4/5;object-fit:cover;margin-bottom:12px;box-shadow:0 30px 60px rgba(0,0,0,.12);transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.person:hover img{transform:translateY(-6px)}
+.person-role{font-size:13px;font-weight:700;letter-spacing:.16em;color:var(--verde)}
+.person-name{margin:0;font-size:clamp(32px,3.6vw,44px);font-weight:900;line-height:.95;letter-spacing:-.03em;font-stretch:84%}
+.person-bio{margin:0;font-size:18px;line-height:1.6;color:var(--grafite);max-width:520px}
+.about-close{margin:0;padding-top:32px;border-top:1px solid var(--linha);font-size:clamp(24px,2.8vw,34px);font-weight:900;line-height:1.1;letter-spacing:-.02em;font-stretch:84%;max-width:900px}
 .cta{background:var(--verde);color:#fff}
 .cta-inner{display:flex;flex-wrap:wrap;gap:32px;align-items:center;justify-content:space-between}
 .btn-light{background:#fff;color:var(--tinta);text-decoration:none;font-size:16px;font-weight:800;letter-spacing:.1em;padding:22px 34px;border-radius:4px;min-height:44px;display:inline-block}
@@ -235,13 +243,33 @@ h1{margin:0;font-size:clamp(56px,8.4vw,118px);font-weight:900;line-height:.86;le
   </div>
 </section>
 
-<section class="about">
-  <div class="wrap section" style="display:flex;flex-wrap:wrap;gap:48px">
-    <h2 class="h2 px-reveal" style="flex:1 1 340px;font-size:clamp(44px,6vw,84px);line-height:.88">CIÊNCIA<br>+ IMPRENSA<span style="color:var(--vermelho)">.</span></h2>
-    <div class="about-text serif px-reveal">
-      <p>A Práxis une ciência e imprensa. <strong>Catharina</strong> é biomédica e física e atua com marketing em saúde. <strong>Carolina</strong> é assessora de imprensa especializada em saúde, com pós em comunicação organizacional.</p>
-      <p>Juntas, ajudamos médicos a serem vistos e escolhidos, com conteúdo correto e dentro das regras.</p>
+<section class="about" id="quem-somos">
+  <div class="wrap section" style="display:flex;flex-direction:column;gap:56px">
+    <div style="display:flex;flex-wrap:wrap;gap:32px 48px;align-items:flex-end">
+      <div class="px-reveal" style="flex:1 1 340px;display:flex;flex-direction:column;gap:20px">
+        <span class="tag"><span class="dot"></span>QUEM ESTÁ POR TRÁS</span>
+        <h2 class="h2" style="font-size:clamp(44px,6vw,84px);line-height:.88">CIÊNCIA<br>+ IMPRENSA<span style="color:var(--vermelho)">.</span></h2>
+      </div>
+      <div class="about-text serif px-reveal">
+        <p>Médico não precisa escolher entre aparecer e se proteger. A Práxis existe para juntar as duas coisas: <strong>o rigor de quem vem da ciência</strong> e <strong>o faro de quem vive a imprensa</strong>.</p>
+        <p>Este checklist é um exemplo do nosso trabalho: a regra traduzida em decisões práticas, para você postar com confiança.</p>
+      </div>
     </div>
+    <div class="team">
+      <article class="person px-reveal">
+        <img src="assets/catharina-maltez.jpg" alt="Catharina Maltez sorrindo, sentada em um sofá de couro com uma caneca na mão" width="600" height="750" loading="lazy">
+        <span class="person-role">CIÊNCIA E MARKETING ESTRATÉGICO</span>
+        <h3 class="person-name">Catharina Maltez</h3>
+        <p class="person-bio serif">Biomédica e física, especializada em marketing estratégico. Une a evidência científica a um posicionamento claro, para que o paciente entenda, confie e escolha, sem prometer o que a medicina não pode prometer.</p>
+      </article>
+      <article class="person px-reveal">
+        <img src="assets/carolina-sarmento.jpg" alt="Carolina Sarmento de vestido verde, sentada à mesa com uma caneca e um caderno" width="600" height="750" loading="lazy">
+        <span class="person-role">ASSESSORIA DE IMPRENSA EM SAÚDE</span>
+        <h3 class="person-name">Carolina Sarmento</h3>
+        <p class="person-bio serif">Assessora de imprensa especializada em saúde, com pós em comunicação organizacional. Sabe o que vira pauta, como se preparar para uma entrevista e o que um médico pode dizer na mídia.</p>
+      </article>
+    </div>
+    <p class="about-close px-reveal">Juntas, ajudamos médicos a serem encontrados, lembrados e escolhidos, <span style="color:var(--vermelho)">dentro das regras do CFM.</span></p>
   </div>
 </section>
 
@@ -258,7 +286,7 @@ h1{margin:0;font-size:clamp(56px,8.4vw,118px);font-weight:900;line-height:.86;le
 
 <footer class="wrap footer">
   <span>Material educativo. Não substitui orientação jurídica.</span>
-  <span><a href="https://www.instagram.com/praxis.mktsaude/" target="_blank" rel="noopener" style="color:inherit">@praxis.mktsaude</a> · CNPJ 68.649.801/0001-16</span>
+  <span><a href="https://www.instagram.com/praxis.comunica/" target="_blank" rel="noopener" style="color:inherit">@praxis.comunica</a> · CNPJ 68.649.801/0001-16</span>
 </footer>
 
 <script>
